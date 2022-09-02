@@ -8,6 +8,24 @@
 
 This repo contains a simple setup script and the configuration files for a basic development virtual machine (VM).
 
+## Get the goods
+
+No git
+
+```shell
+curl -L https://github.com/ericyd/workspace/archive/refs/heads/main.zip -o workspace.zip
+unzip -j workspace.zip -d workspace
+rm workspace.zip
+cd workspace
+```
+
+Yes git
+
+```shell
+git clone git@github.com:ericyd/workspace
+cd workspace
+```
+
 ## Install dependencies and start VM
 
 These commands will
@@ -20,7 +38,6 @@ These commands will
     - Note: you can always use `vagrant ssh` to access the VM, instead of `ssh workbox`. However, `vagrant ssh` requires you to be in this working directory. Setting up ssh forwarding on the host machine allows you to ssh in from any terminal/directory.
 
 ```shell
-curl -L https://github.com/ericyd/workspace/archive/refs/heads/main.zip -o workspace.zip
 ./setup.sh
 # add commands to customization.sh if desired
 vagrant up --provision
