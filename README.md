@@ -77,10 +77,13 @@ vagrant up --provision
 ```shell
 # generate key
 ssh-keygen -t ed25519 -C "your_email@example.com"
+
 # start ssh-agent
 eval "$(ssh-agent -s)"
+
 # add key to agent
 ssh-add ~/.ssh/id_ed25519
+
 # print public key and add to GitHub
 cat ~/.ssh/id_ed25519.pub
 ```
@@ -88,13 +91,20 @@ cat ~/.ssh/id_ed25519.pub
 **GPG key**
 
 ```shell
-# generate new key
-gpg --full-generate-key
+# generate new key (must be 4096 bits for GitHub). Alternatively, can use the CLI prompts: gpg --full-generate-key
+gpg --quick-generate-key "My Fullname (some description) <my_email@example.com>" rsa4096 default none
+
 # get the key ID (the string after "sec   rsa4096")
+# For example, if your output looks like this↓, then the key ID is BA94D8274CE2874D
+#   sec   rsa4096/BA94D8274CE2874D 2022-09-02 [SC]
+#         9C4A19B3B413717AF6AA7B5BBA94D8274CE2874D
+#   uid                 [ultimate] My Fullname (some description) <test@example.com>
 gpg --list-secret-keys --keyid-format=long
+
 # add key ID to git
 git config --global user.signingkey <ID>
 git config --global commit.gpgsign true
+
 # print key and add to GitHub
 gpg --armor --export <ID>
 ```
