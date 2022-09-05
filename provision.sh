@@ -53,6 +53,14 @@ if [ -z "$(which aws)" ]; then
     rm -rf ./aws ./awscliv2.zip
 fi
 
+# AWS VPN client
+# https://docs.aws.amazon.com/vpn/latest/clientvpn-user/client-vpn-connect-linux.html#client-vpn-connect-linux-install
+if [ -z "$(which awsvpnclient)" ]; then
+    echo "deb [arch=amd64] https://d20adtppz83p9s.cloudfront.net/GTK/latest/debian-repo ubuntu-20.04 main" | sudo tee /etc/apt/sources.list.d/aws-vpn-client.list
+    sudo apt-get update
+    sudo apt-get install -y awsvpnclient
+fi
+
 # Expand File Watchers so VSCode can breathe
 # https://code.visualstudio.com/docs/setup/linux#_visual-studio-code-is-unable-to-watch-for-file-changes-in-this-large-workspace-error-enospc
 if ! grep -q "fs.inotify.max_user_watches=524288" "/etc/sysctl.conf" ; then
