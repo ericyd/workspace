@@ -46,7 +46,8 @@ vagrant ssh-config >>  ~/.ssh/config
 
 ## Set up VSCode
 
-1. Install dependencies:
+0. Install VSCode on the host machine
+1. Install dependencies on the host:
     - Cmd+Shift+P and type "install remote development"
     - Install plugins
         1. Remote - Containers
@@ -58,6 +59,22 @@ vagrant ssh-config >>  ~/.ssh/config
 When you start an integrated terminal, it should already be SSH'd in to the machine.
 
 The working directory should be in the VM too
+
+## Set up IntelliJ
+
+_Disclaimer: IntelliJ remote development is a little more complex than VSCode. IntelliJ is not my primary IDE so the below instructions are provided as a best guess. [The official documentation](https://www.jetbrains.com/help/idea/remote-development-overview.html#workflow) is probably better, but a summary is below_
+
+1. Install IntelliJ on the host machine
+    - Also make sure you have Jetbrains Gateway installed. [Check the documentation](https://www.jetbrains.com/help/idea/jetbrains-gateway.html) to verify you have Gateway installed (it will likely be included by default assuming you have a fairly recent version of IntelliJ).
+2. Install IntelliJ on the VM
+    - `sudo snap install intellij-idea-ultimate --classic`, or
+    - `sudo snap install intellij-idea-community --classic`
+    - [Reference](https://www.jetbrains.com/idea/download/#section=linux)
+3. With the VM running, start the dev server
+    - `./home/vagrant/.cache/JetBrains/RemoteDev/dist/remote-dev-server.sh`
+    - [Reference](https://www.jetbrains.com/help/idea/remote-development-overview.html#workflow)
+4. Copy the connection link
+5. On the host machine, paste the link into a browser and let Jetbrains Gateway handle the connection
 
 ## Making changes to the VM
 
@@ -116,6 +133,9 @@ gpg --armor --export <ID>
     * [Docs](https://www.vagrantup.com/docs)
 * [Git SSH configuration](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
 * [Git GPG commit signing](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
+* [IntelliJ installation](https://www.jetbrains.com/idea/download/#section=linux)
+* [IntelliJ remote dev workflow](https://www.jetbrains.com/help/idea/remote-development-overview.html#workflow)
+* [IntelliJ Gateway installation](https://www.jetbrains.com/help/idea/jetbrains-gateway.html)
 
 ## (potentially) useful tidbits
 
