@@ -32,6 +32,9 @@ cat > customization.sh <<-EOF
 # If you use GPG commit signing, this will be useful; it extends the amount of time your GPG password lives in the cache to a year
 # [ ! -f /home/vagrant/.gnupg/gpg-agent.conf ] || [ -z "$(grep default-cache-ttl /home/vagrant/.gnupg/gpg-agent.conf)" ] && echo "default-cache-ttl 34560000" >> /home/vagrant/.gnupg/gpg-agent.conf
 # [ ! -f /home/vagrant/.gnupg/gpg-agent.conf ] || [ -z "$(grep max-cache-ttl /home/vagrant/.gnupg/gpg-agent.conf)" ] && echo "max-cache-ttl 34560000" >> /home/vagrant/.gnupg/gpg-agent.conf
+
+# If you prefer to use the locally installed postgres rather than docker, you'll want to auto-start the postgres server on startup
+# sudo systemctl enable postgresql@12-main
 EOF
 chmod +x customization.sh
 
