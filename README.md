@@ -2,6 +2,18 @@
 
 (heavily inspired by [markomitranic/docker-mac-vagrant](https://github.com/markomitranic/docker-mac-vagrant/tree/container-first))
 
+- [What is this?](#what-is-this)
+- [Get the goods](#get-the-goods)
+- [Install dependencies and start VM](#install-dependencies-and-start-vm)
+- [Set up VSCode](#set-up-vs-code)
+- [Set up IntelliJ](#set-up-intelli-j)
+- [Making changes to the VM](#making-changes-to-the-vm)
+- [Git configuration](#git-configuration)
+    - [SSH key](#ssh-key)
+    - [GPG key](#gpg-key)
+- [References](#references)
+- [(potentially) useful tidbits](#potentially-useful-tidbits)
+
 ## What is this?
 
 [Vagrant](https://www.vagrantup.com/) is a tool for configuring reproducible development environments.
@@ -89,7 +101,7 @@ vagrant up --provision
 
 ## Git configuration
 
-**SSH key**
+### SSH key
 
 ```shell
 # generate key
@@ -105,7 +117,7 @@ ssh-add ~/.ssh/id_ed25519
 cat ~/.ssh/id_ed25519.pub
 ```
 
-**GPG key**
+### GPG key
 
 ```shell
 # generate new key (must be 4096 bits for GitHub). Alternatively, can use the CLI prompts: gpg --full-generate-key
