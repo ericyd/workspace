@@ -15,7 +15,13 @@ sudo apt-get -y install \
     gcc \
     g++ \
     make \
-    libpq-dev
+    libpq-dev \
+    pinentry-tty
+
+if [ "$(readlink -e /usr/bin/pinentry)" != "/usr/bin/pinentry-tty" ]; then
+    sudo rm /usr/bin/pinentry
+    sudo ln -s /usr/bin/pinentry-tty usr/bin/pinentry
+fi
 
 # Install docker compose
 # https://docs.docker.com/compose/install/
