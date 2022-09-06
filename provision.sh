@@ -18,12 +18,13 @@ sudo apt-get -y install \
     libpq-dev \
     pinentry-tty
 
+# Use nicer pinentry for GPG
 if [ "$(readlink -e /usr/bin/pinentry)" != "/usr/bin/pinentry-tty" ]; then
     sudo rm /usr/bin/pinentry
     sudo ln -s /usr/bin/pinentry-tty usr/bin/pinentry
 fi
 
-# Install docker compose
+# Docker (and Compose)
 # https://docs.docker.com/compose/install/
 # https://docs.docker.com/desktop/install/ubuntu/
 if [ -z "$(which docker)" ]; then
@@ -50,7 +51,7 @@ if [ -z "$(which docker)" ]; then
     newgrp docker
 fi
 
-# Install aws
+# AWS CLI
 # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 if [ -z "$(which aws)" ]; then
     curl -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -103,10 +104,15 @@ if [ -z "$(which psql)" ]; then
         libpq-dev
 fi
 
+# Set default shell - /bin/sh links to dash by default???
 sudo usermod --shell /bin/bash $USER
-# /bin/sh links to dash by default???
 sudo rm /bin/sh
 sudo ln /bin/bash /bin/sh
 
 # Bash Git completions
 [ -z "$(grep "bash-completion/completions/git" ~/.bashrc)" ] && echo ". /usr/share/bash-completion/completions/git" >> ~/.bashrc
+
+# If using GPG commit signing, this saves a lot of headache by extending the amount of time your GPG password lives in the cache to a year
+# If not using GPG commit signing, well, doesn't hurt!
+[ ! -f /home/vagrant/.gnupg/gpg-agent.conf ] || [ -z "$(grep default-cache-ttl /home/vagrant/.gnupg/gpg-agent.conf)" ] && echo "default-cache-ttl 34560000" >> /home/vagrant/.gnupg/gpg-agent.conf
+[ ! -f /home/vagrant/.gnupg/gpg-agent.conf ] || [ -z "$(grep max-cache-ttl /home/vagrant/.gnupg/gpg-agent.conf)" ] && echo "max-cache-ttl 34560000" >> /home/vagrant/.gnupg/gpg-agent.conf
