@@ -107,3 +107,6 @@ sudo usermod --shell /bin/bash $USER
 # /bin/sh links to dash by default???
 sudo rm /bin/sh
 sudo ln /bin/bash /bin/sh
+
+# Bash Git completions
+[ -z "$(grep "bash-completion/completions/git" ~/.bashrc)" ] && echo ". /usr/share/bash-completion/completions/git" >> ~/.bashrc
