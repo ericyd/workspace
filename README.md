@@ -47,7 +47,7 @@ These commands will
 3. Create a basic `customization.sh` file. This is not tracked by git. The purpose is to have a place where you can add customization to your own VM that isn't necessarily intended to be shared with a team. For example, if you prefer a specific shell or software, you can add commands to install it here. If you intend to add any customizations, its best to do it before you spin up the VM, but you can always do it later too.
 4. Spin up and provision your VM
 5. Set up SSH forwarding so you can use your host machine's SSH keys in the VM
-    - Note: you can always use `vagrant ssh` to access the VM, instead of `ssh workbox`. However, `vagrant ssh` requires you to be in this working directory. Setting up ssh forwarding on the host machine allows you to ssh in from any terminal/directory.
+    - Note: you can always use `vagrant ssh` to access the VM, instead of `ssh dev`. However, `vagrant ssh` requires you to be in this working directory. Setting up ssh forwarding on the host machine allows you to ssh in from any terminal/directory.
 
 ```shell
 ./setup.sh
@@ -66,7 +66,7 @@ vagrant ssh-config >>  ~/.ssh/config
         2. Remote - SSH.
 2. Connect to the VM:
     1. Cmd+Shift+P and type "Remote-SSH: Connect to Host"
-    2. Pick "workbox" from the list.
+    2. Pick "dev" from the list.
 
 When you start an integrated terminal, it should already be SSH'd in to the machine.
 
@@ -156,7 +156,7 @@ gpg --armor --export <ID>
 This example copies the contents of an SSH public key into the authorized_keys file of the VM
 
 ```shell
-cat ~/.ssh/id_ed25519.pub | xargs -J {} ssh workbox 'echo "{}" >> ~/.ssh/authorized_keys'
+cat ~/.ssh/id_ed25519.pub | xargs -J {} ssh dev 'echo "{}" >> ~/.ssh/authorized_keys'
 ```
 
 **Copy a file from host machine to the VM**
@@ -164,5 +164,5 @@ cat ~/.ssh/id_ed25519.pub | xargs -J {} ssh workbox 'echo "{}" >> ~/.ssh/authori
 This example copies the global Git config, but you can swap the path for any other file you'd like to copy, e.g. `~/.bashrc`
 
 ```shell
-scp ~/.gitconfig workbox:~/.gitconfig
+scp ~/.gitconfig dev:~/.gitconfig
 ```

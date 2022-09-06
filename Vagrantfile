@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   # Load variables from .env
   config.env.enable
 
-  env_box_name = ENV["BOX_NAME"] || "workbox"
+  env_box_name = ENV["BOX_NAME"] || "dev"
   env_ram = ENV["RAM_MEMORY"] || 8192
   env_cpus = ENV["CPU_COUNT"] || 4
   env_private_ip = ENV["PRIVATE_IP"] || "192.168.56.4"
