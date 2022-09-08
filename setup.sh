@@ -31,6 +31,11 @@ cat > customization.sh <<-EOF
 
 # If you prefer to use the locally installed postgres rather than docker, you'll want to auto-start the postgres server on startup
 # sudo systemctl enable postgresql@12-main
+# Or, if you prefer to use docker for your database, you may want to disable the default postgres service
+# sudo systemctl stop postgresql@12-main
+# sudo systemctl stop postgresql.service
+# sudo systemctl disable postgresql.service
+# sudo systemctl disable postgresql@12-main
 EOF
 chmod +x customization.sh
 
