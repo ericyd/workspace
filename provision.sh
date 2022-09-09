@@ -27,7 +27,7 @@ fi
 # Docker (and Compose)
 # https://docs.docker.com/compose/install/
 # https://docs.docker.com/desktop/install/ubuntu/
-if [ -z "$(which docker)" ]; then
+if [ -z "$(command -v docker)" ]; then
     sudo mkdir -p /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     echo \
@@ -53,7 +53,7 @@ fi
 
 # AWS CLI
 # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-if [ -z "$(which aws)" ]; then
+if [ -z "$(command -v aws)" ]; then
     curl -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install --update
@@ -62,7 +62,7 @@ fi
 
 # AWS VPN client
 # https://docs.aws.amazon.com/vpn/latest/clientvpn-user/client-vpn-connect-linux.html#client-vpn-connect-linux-install
-if [ -z "$(which awsvpnclient)" ]; then
+if [ -z "$(command -v awsvpnclient)" ]; then
     echo "deb [arch=amd64] https://d20adtppz83p9s.cloudfront.net/GTK/latest/debian-repo ubuntu-20.04 main" | sudo tee /etc/apt/sources.list.d/aws-vpn-client.list
     sudo apt-get update
     sudo apt-get install -y awsvpnclient
@@ -77,7 +77,7 @@ fi
 
 # Node
 # https://github.com/nodejs/help/wiki/Installation
-if [ -z "$(which node)" ]; then
+if [ -z "$(command -v node)" ]; then
     mkdir -p /usr/local/lib/nodejs
     NODE_VERSION=v16.14.0
     DISTRO=linux-x64
@@ -93,7 +93,7 @@ fi
 # Postgres
 # from https://www.postgresql.org/download/linux/ubuntu/
 # Even though Docker does the heavy lifting, some postgres utilities are very convenient for Node dependencies
-if [ -z "$(which psql)" ]; then
+if [ -z "$(command -v psql)" ]; then
     POSTGRES_VERION=12
     sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
