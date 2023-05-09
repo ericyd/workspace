@@ -9,8 +9,8 @@
 - [Set up IntelliJ](#set-up-intelli-j)
 - [Making changes to the VM](#making-changes-to-the-vm)
 - [Git configuration](#git-configuration)
-    - [SSH key](#ssh-key)
-    - [GPG key](#gpg-key)
+  - [SSH key](#ssh-key)
+  - [GPG key](#gpg-key)
 - [References](#references)
 - [(potentially) useful tidbits](#potentially-useful-tidbits)
 
@@ -40,6 +40,8 @@ cd workspace
 
 ## Install dependencies and start VM
 
+**Important! If you're running a Mac M1 or M2 chip (i.e. arm64), you must [download VirtualBox from the website and install manually](https://www.virtualbox.org/wiki/Downloads). This might change in the future but currently homebrew will try to install the x86 installation.**
+
 These commands will
 
 1. Install base dependencies (homebrew, virtualbox, vagrant)
@@ -47,7 +49,7 @@ These commands will
 3. Create a basic `customization.sh` file. This is not tracked by git. The purpose is to have a place where you can add customization to your own VM that isn't necessarily intended to be shared with a team. For example, if you prefer a specific shell or software, you can add commands to install it here. If you intend to add any customizations, its best to do it before you spin up the VM, but you can always do it later too.
 4. Spin up and provision your VM
 5. Set up SSH forwarding so you can use your host machine's SSH keys in the VM
-    - Note: you can always use `vagrant ssh` to access the VM, instead of `ssh dev`. However, `vagrant ssh` requires you to be in this working directory. Setting up ssh forwarding on the host machine allows you to ssh in from any terminal/directory.
+   - Note: you can always use `vagrant ssh` to access the VM, instead of `ssh dev`. However, `vagrant ssh` requires you to be in this working directory. Setting up ssh forwarding on the host machine allows you to ssh in from any terminal/directory.
 
 ```shell
 ./setup.sh
@@ -60,13 +62,13 @@ vagrant ssh-config >>  ~/.ssh/config
 
 0. Install VSCode on the host machine
 1. Install dependencies on the host:
-    - Cmd+Shift+P and type "install remote development"
-    - Install plugins
-        1. Remote - Containers
-        2. Remote - SSH.
+   - Cmd+Shift+P and type "install remote development"
+   - Install plugins
+     1. Remote - Containers
+     2. Remote - SSH.
 2. Connect to the VM:
-    1. Cmd+Shift+P and type "Remote-SSH: Connect to Host"
-    2. Pick "dev" from the list.
+   1. Cmd+Shift+P and type "Remote-SSH: Connect to Host"
+   2. Pick "dev" from the list.
 
 When you start an integrated terminal, it should already be SSH'd in to the machine.
 
@@ -77,14 +79,14 @@ The working directory should be in the VM too
 _Disclaimer: IntelliJ remote development is a little more complex than VSCode. IntelliJ is not my primary IDE so the below instructions are provided as a best guess. [The official documentation](https://www.jetbrains.com/help/idea/remote-development-overview.html#workflow) is probably better, but a summary is below_
 
 1. Install IntelliJ on the host machine
-    - Also make sure you have Jetbrains Gateway installed. [Check the documentation](https://www.jetbrains.com/help/idea/jetbrains-gateway.html) to verify you have Gateway installed (it will likely be included by default assuming you have a fairly recent version of IntelliJ).
+   - Also make sure you have Jetbrains Gateway installed. [Check the documentation](https://www.jetbrains.com/help/idea/jetbrains-gateway.html) to verify you have Gateway installed (it will likely be included by default assuming you have a fairly recent version of IntelliJ).
 2. Install IntelliJ on the VM
-    - `sudo snap install intellij-idea-ultimate --classic`, or
-    - `sudo snap install intellij-idea-community --classic`
-    - [Reference](https://www.jetbrains.com/idea/download/#section=linux)
+   - `sudo snap install intellij-idea-ultimate --classic`, or
+   - `sudo snap install intellij-idea-community --classic`
+   - [Reference](https://www.jetbrains.com/idea/download/#section=linux)
 3. With the VM running, start the dev server
-    - `./home/vagrant/.cache/JetBrains/RemoteDev/dist/remote-dev-server.sh`
-    - [Reference](https://www.jetbrains.com/help/idea/remote-development-overview.html#workflow)
+   - `./home/vagrant/.cache/JetBrains/RemoteDev/dist/remote-dev-server.sh`
+   - [Reference](https://www.jetbrains.com/help/idea/remote-development-overview.html#workflow)
 4. Copy the connection link
 5. On the host machine, paste the link into a browser and let Jetbrains Gateway handle the connection
 
@@ -140,14 +142,14 @@ gpg --armor --export <ID>
 
 ## References
 
-* [Useful tips-n-tricks: github.com/markomitranic/docker-mac-vagrant](https://github.com/markomitranic/docker-mac-vagrant/tree/container-first)
-* [Vagrant](https://www.vagrantup.com/)
-    * [Docs](https://www.vagrantup.com/docs)
-* [Git SSH configuration](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-* [Git GPG commit signing](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
-* [IntelliJ installation](https://www.jetbrains.com/idea/download/#section=linux)
-* [IntelliJ remote dev workflow](https://www.jetbrains.com/help/idea/remote-development-overview.html#workflow)
-* [IntelliJ Gateway installation](https://www.jetbrains.com/help/idea/jetbrains-gateway.html)
+- [Useful tips-n-tricks: github.com/markomitranic/docker-mac-vagrant](https://github.com/markomitranic/docker-mac-vagrant/tree/container-first)
+- [Vagrant](https://www.vagrantup.com/)
+  - [Docs](https://www.vagrantup.com/docs)
+- [Git SSH configuration](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+- [Git GPG commit signing](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
+- [IntelliJ installation](https://www.jetbrains.com/idea/download/#section=linux)
+- [IntelliJ remote dev workflow](https://www.jetbrains.com/help/idea/remote-development-overview.html#workflow)
+- [IntelliJ Gateway installation](https://www.jetbrains.com/help/idea/jetbrains-gateway.html)
 
 ## (potentially) useful tidbits
 
