@@ -117,6 +117,14 @@ ssh-add ~/.ssh/id_ed25519
 
 # print public key and add to GitHub
 cat ~/.ssh/id_ed25519.pub
+
+# configure SSH if this is a fresh install
+cat >> ~/.ssh/config <<EOF
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_ed25519
+EOF
 ```
 
 ### GPG key
