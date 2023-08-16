@@ -39,6 +39,8 @@ cat > customization.sh <<-EOF
 
 # Add any git aliases you like, e.g.
 # (thanks to https://stackoverflow.com/a/9074343/3991555)
+# git config --global user.name My Name
+# git config --global user.email email@domain.com
 # git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
 # git config --global alias.ca "commit --amend --no-edit"
 EOF
