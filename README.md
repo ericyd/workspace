@@ -40,8 +40,6 @@ cd workspace
 
 ## Install dependencies and start VM
 
-**Important! If you're running a Mac M1 or M2 chip (i.e. arm64), you must [download VirtualBox from the website and install manually](https://www.virtualbox.org/wiki/Downloads). This might change in the future but currently homebrew will try to install the x86 installation.**
-
 These commands will
 
 1. Install base dependencies (homebrew, virtualbox, vagrant)
