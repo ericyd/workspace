@@ -42,16 +42,18 @@ cat > customization.sh <<-EOF
 # git config --global user.name My Name
 # git config --global user.email email@domain.com
 # git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+# git config --global alias.l "log --abbrev-commit --decorate --date=short --format=format:'%h, %aI - %s%d' -n 10"
 # git config --global alias.ca "commit --amend --no-edit"
+# git config --global alias.pfwl "push --force-with-lease"
 EOF
 chmod +x customization.sh
 
 echo
-echo '>> Contents of your .env file:'
+echo ">> Contents of your .env file:"
 echo
 
 cat .env
 
 echo
-echo '>> Please review variables defined in .env file shown above.'
-echo '>> If you need to make any adjustments, edit .env file now!'
+echo ">> Please review variables defined in .env file shown above."
+echo ">> If you need to make any adjustments, edit .env file now!"

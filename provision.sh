@@ -79,7 +79,7 @@ fi
 # https://github.com/nodejs/help/wiki/Installation
 if [ -z "$(command -v node)" ]; then
     mkdir -p /usr/local/lib/nodejs
-    NODE_VERSION=v16.14.0
+    NODE_VERSION=v20.17.0
     DISTRO=linux-x64
     curl -L "https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-$DISTRO.tar.xz" -o "node-$NODE_VERSION-$DISTRO.tar.xz"
     tar -xJvf node-$NODE_VERSION-$DISTRO.tar.xz -C /usr/local/lib/nodejs

@@ -40,6 +40,8 @@ cd workspace
 
 ## Install dependencies and start VM
 
+**At time of writing (2024-09-24), Vagrant does not support VirtualBox 7.1, which is the first version to officially support Mac Arm64 processors (Apple Silicon). Therefore, this repo is not useful for Arm64 Macs right now, but that may change in the future! Check https://developer.hashicorp.com/vagrant/docs/providers/virtualbox for updates on supported versions**
+
 These commands will
 
 1. Install base dependencies (homebrew, virtualbox, vagrant)
