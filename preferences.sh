@@ -20,6 +20,7 @@ git config --global alias.back1 "reset HEAD~1"
 git config --global user.name "Eric Dauenhauer"
 git config --global user.email "eric@ericyd.com"
 git config --global push.autosetupremote true
+git config --global rerere.enabled true
 
 # zsh
 alias up="cd .."
